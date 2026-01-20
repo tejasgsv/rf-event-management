@@ -1,0 +1,301 @@
+/**
+ * DayTabs Component Styles
+ * 
+ * Features:
+ * - Day-wise navigation with smooth transitions
+ * - Active state indicator animation
+ * - Mobile-friendly button sizing
+ * - Touch-friendly targets (44px minimum)
+ */
+
+/* ===== DAY TABS CONTAINER ===== */
+
+.day-tabs-container {
+  margin-bottom: 2rem;
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* ===== DAY TABS WRAPPER ===== */
+
+.day-tabs-wrapper {
+  display: flex;
+  gap: 0;
+  position: relative;
+  z-index: 1;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ===== INDIVIDUAL DAY TAB ===== */
+
+.day-tab {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gray-600);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 60px;
+  justify-content: center;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -3px;
+
+  /* Touch target minimum 44px */
+  min-width: 44px;
+}
+
+.day-tab:hover {
+  background: var(--gray-50);
+  color: var(--primary-dark);
+}
+
+.day-tab:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: -2px;
+}
+
+.day-tab.active {
+  color: var(--primary-color);
+  background: linear-gradient(
+    180deg,
+    rgba(102, 126, 234, 0.05) 0%,
+    transparent 100%
+  );
+}
+
+/* ===== DAY LABEL & NUMBER ===== */
+
+.day-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.7;
+  font-weight: 500;
+}
+
+.day-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* ===== DAY BADGE (FOR MASTERCLASS DAY) ===== */
+
+.day-badge {
+  font-size: 0.65rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-top: 0.25rem;
+}
+
+/* ===== ANIMATED UNDERLINE INDICATOR ===== */
+
+.day-tabs-indicator {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--primary-dark)
+  );
+  border-radius: 2px 2px 0 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+  .day-tabs-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .day-tab {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    min-height: 55px;
+    flex-basis: 50%;
+  }
+
+  .day-number {
+    font-size: 1.1rem;
+  }
+
+  .day-label {
+    font-size: 0.65rem;
+  }
+
+  .day-badge {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.4rem;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  .day-tabs-container {
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+  }
+
+  .day-tabs-wrapper {
+    flex-wrap: wrap;
+    border-radius: 8px;
+  }
+
+  .day-tab {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+    min-height: 50px;
+    flex-basis: 33.333%;
+    gap: 0.15rem;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+  }
+
+  .day-label {
+    font-size: 0.6rem;
+    display: none; /* Hide label on small phones to save space */
+  }
+
+  .day-number {
+    font-size: 1rem;
+  }
+
+  .day-badge {
+    font-size: 0.55rem;
+    padding: 0.12rem 0.35rem;
+    margin-top: 0.1rem;
+  }
+
+  .day-tabs-indicator {
+    height: 2px;
+  }
+}
+
+/* Very Small Mobile (360px and below) */
+@media (max-width: 360px) {
+  .day-tab {
+    padding: 0.5rem 0.6rem;
+    min-height: 48px;
+  }
+
+  .day-number {
+    font-size: 0.9rem;
+  }
+
+  .day-badge {
+    display: none; /* Hide badge on very small phones */
+  }
+}
+
+/* ===== MULTI-DAY LAYOUT ===== */
+
+/* If 4+ days, make it scrollable on mobile */
+@media (max-width: 480px) {
+  .day-tabs-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  .day-tab {
+    scroll-snap-align: center;
+    flex-basis: auto;
+    min-width: 70px;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+
+/* Focus visible for keyboard navigation */
+.day-tab:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: -3px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+  .day-tab {
+    border-bottom: 2px solid transparent;
+  }
+
+  .day-tab.active {
+    border-bottom: 3px solid var(--primary-color);
+  }
+
+  .day-tabs-indicator {
+    opacity: 0;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .day-tab,
+  .day-tabs-indicator {
+    transition: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .day-tabs-container {
+    background: #1f2937;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .day-tabs-wrapper {
+    background: #1f2937;
+  }
+
+  .day-tab {
+    color: #9ca3af;
+    border-bottom-color: transparent;
+  }
+
+  .day-tab:hover {
+    background: #374151;
+    color: var(--primary-color);
+  }
+
+  .day-tab.active {
+    background: rgba(102, 126, 234, 0.1);
+    color: var(--primary-color);
+  }
+
+  .day-label {
+    opacity: 0.6;
+  }
+}
+
+/* Print styles */
+@media print {
+  .day-tabs-container {
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+
+  .day-tab {
+    border: 1px solid #ccc;
+  }
+}

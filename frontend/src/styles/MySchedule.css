@@ -1,0 +1,141 @@
+/* ===============================
+   My Schedule Page
+   =============================== */
+
+.my-schedule {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.my-schedule h1 {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 2rem;
+  color: #111827;
+}
+
+.my-schedule .subtitle {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 32px;
+  font-size: 0.95rem;
+}
+
+/* ===============================
+   Search Form
+   =============================== */
+
+.schedule-form {
+  display: flex;
+  gap: 10px;
+  max-width: 500px;
+  margin: 0 auto 40px;
+}
+
+.schedule-form input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+}
+
+.schedule-form button {
+  padding: 12px 24px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.schedule-form button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* ===============================
+   Messages
+   =============================== */
+
+.error-text {
+  text-align: center;
+  color: #dc2626;
+  margin-bottom: 16px;
+}
+
+.empty-text {
+  text-align: center;
+  color: #6b7280;
+}
+
+/* ===============================
+   Registration Cards
+   =============================== */
+
+.schedule-list {
+  display: grid;
+  gap: 20px;
+}
+
+.schedule-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.schedule-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.schedule-details h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
+  color: #111827;
+}
+
+.schedule-details p {
+  margin: 0 0 6px 0;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.status-badge {
+  display: inline-block;
+  background-color: #ecfdf5;
+  color: #065f46;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ===============================
+   Responsive
+   =============================== */
+
+@media (max-width: 640px) {
+  .schedule-form {
+    flex-direction: column;
+  }
+
+  .schedule-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .schedule-card img {
+    width: 120px;
+    height: 120px;
+  }
+}

@@ -1,0 +1,42 @@
+/* Wrapper */
+.event-details {
+  padding-bottom: 40px;
+  background: #f8fafc;
+}
+
+/* Hero */
+.event-details .hero {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.event-details h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.event-details p {
+  font-size: 16px;
+  opacity: 0.95;
+}
+
+/* Info Section */
+.event-details .event-section {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.event-details .event-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* CTA */
+.event-details .btn {
+  margin-top: 20px;
+}

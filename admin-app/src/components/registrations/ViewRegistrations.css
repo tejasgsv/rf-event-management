@@ -1,0 +1,176 @@
+/* ================================
+   BASE PAGE
+================================ */
+.admin-page {
+  padding: 24px;
+  background: #f6f8fb;
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* ================================
+   HEADER
+================================ */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ================================
+   EMPTY / ERROR
+================================ */
+.empty-state {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+.error {
+  color: #b91c1c;
+}
+
+/* ================================
+   TABLE WRAPPER
+================================ */
+.table-wrapper {
+  background: #ffffff;
+  border-radius: 10px;
+  overflow-x: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* ================================
+   TABLE
+================================ */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.admin-table thead {
+  background: #f3f4f6;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.admin-table th {
+  font-weight: 600;
+  color: #374151;
+}
+
+.admin-table td {
+  color: #1f2937;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* ================================
+   BADGES
+================================ */
+.badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-confirmed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badge-waitlisted {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge-cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+.danger-btn {
+  background: #dc2626;
+  color: #ffffff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.danger-btn:hover {
+  background: #b91c1c;
+}
+
+.danger-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.muted {
+  color: #9ca3af;
+}
+
+/* ================================
+   RESPONSIVE (TABLET)
+================================ */
+@media (max-width: 900px) {
+  .admin-page {
+    padding: 16px;
+  }
+
+  .page-header h1 {
+    font-size: 20px;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 12px;
+    font-size: 13px;
+  }
+}
+
+/* ================================
+   RESPONSIVE (MOBILE)
+================================ */
+@media (max-width: 600px) {
+  .page-header {
+    align-items: flex-start;
+  }
+
+  .admin-table {
+    min-width: 700px;
+  }
+
+  .danger-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}

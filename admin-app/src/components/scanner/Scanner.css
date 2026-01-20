@@ -1,0 +1,44 @@
+.scanner-page {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+  text-align: center;
+}
+
+.scanner-box {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.scanner-box input {
+  flex: 1;
+  padding: 14px;
+  font-size: 16px;
+}
+
+.scanner-box button {
+  padding: 14px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.scan-result {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.scan-result.success {
+  background: #e6fffa;
+  border: 2px solid #10b981;
+}
+
+.scan-result.error {
+  background: #fee2e2;
+  border: 2px solid #ef4444;
+}
+
+.scan-result h2 {
+  margin-bottom: 10px;
+}

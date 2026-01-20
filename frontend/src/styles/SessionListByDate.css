@@ -1,0 +1,15 @@
+.session-wrapper.clickable {
+  cursor: pointer;
+  border-left: 4px solid #6a5acd;
+}
+
+.session-wrapper.clickable:hover {
+  background: #f8f7ff;
+}
+
+.masterclass-cta {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #6a5acd;
+  font-weight: 600;
+}

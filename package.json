@@ -1,0 +1,24 @@
+{
+  "name": "rf-event-management",
+  "version": "1.0.0",
+  "description": "Reliance Foundation Event - Premium Conference & Masterclasses",
+  "scripts": {
+    "install-all": "npm install && cd frontend && npm install && cd ../admin-app && npm install && cd ../backend && npm install",
+    "frontend": "cd frontend && npm run dev",
+    "admin": "cd admin-app && npm run dev",
+    "backend": "cd backend && npm run dev",
+    "backend:start": "cd backend && npm start",
+    "dev": "npm run frontend",
+    "build:all": "cd frontend && npm run build && cd ../admin-app && npm run build",
+    "start:all": "concurrently \"npm run backend\" \"npm run frontend\" \"npm run admin\""
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  }
+}

@@ -1,0 +1,124 @@
+/* Logo Component Styles */
+.logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+.logo-container:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0; /* Prevent text overflow */
+}
+
+/* Logo Image */
+.logo-image {
+  height: 50px;
+  width: auto;
+  max-width: 80px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Logo Text Section */
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+  min-width: 0; /* Prevent text wrapping issues */
+}
+
+.logo-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--gray-900);
+  line-height: 1.2;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.logo-subtitle {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--gray-600);
+  letter-spacing: 0.02em;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+
+/* Responsive: Tablet */
+@media (max-width: 768px) {
+  .logo-wrapper {
+    gap: 0.75rem;
+  }
+
+  .logo-image {
+    height: 45px;
+    max-width: 70px;
+  }
+
+  .logo-title {
+    font-size: 1.25rem;
+  }
+
+  .logo-subtitle {
+    font-size: 0.65rem;
+  }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 480px) {
+  .logo-wrapper {
+    gap: 0.5rem;
+  }
+
+  .logo-image {
+    height: 40px;
+    max-width: 60px;
+  }
+
+  .logo-title {
+    font-size: 1rem;
+  }
+
+  .logo-subtitle {
+    font-size: 0.6rem;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 360px) {
+  .logo-wrapper {
+    gap: 0.4rem;
+  }
+
+  .logo-image {
+    height: 35px;
+    max-width: 55px;
+  }
+
+  .logo-title {
+    font-size: 0.9rem;
+  }
+
+  .logo-subtitle {
+    display: none; /* Hide on very small screens */
+  }
+}

@@ -1,0 +1,170 @@
+/* CTAButton.css */
+
+.cta-container {
+  width: 100%;
+}
+
+.cta-button {
+  width: 100%;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 54px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Available State */
+.cta-button.available {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.cta-button.available:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.cta-button.available:not(:disabled):active {
+  transform: translateY(0);
+}
+
+/* Registered State */
+.cta-button.registered {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  cursor: default;
+}
+
+.cta-button.registered:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+/* Waitlisted State */
+.cta-button.waitlisted {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.cta-button.waitlisted:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+/* Conflict State */
+.cta-button.conflict {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Closed State */
+.cta-button.closed {
+  background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+  color: white;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Offline State */
+.cta-button.offline {
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+  color: white;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Loading State */
+.cta-button.loading {
+  background: linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%);
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+/* Disabled State */
+.cta-button:disabled {
+  cursor: not-allowed;
+}
+
+/* Loading Spinner */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.button-text {
+  display: flex;
+  align-items: center;
+}
+
+/* Help Messages */
+.help-message {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.help-message.conflict {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border-left: 3px solid #dc2626;
+}
+
+.help-message.closed {
+  background: rgba(107, 114, 128, 0.1);
+  color: #374151;
+  border-left: 3px solid #6b7280;
+}
+
+.help-message.offline {
+  background: rgba(139, 92, 246, 0.1);
+  color: #7c3aed;
+  border-left: 3px solid #8b5cf6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cta-button {
+    padding: 0.85rem 1.5rem;
+    font-size: 1rem;
+    min-height: 48px;
+  }
+
+  .help-message {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    min-height: 44px;
+  }
+}

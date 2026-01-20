@@ -1,0 +1,19 @@
+.filters-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.filters-row label {
+  font-weight: 600;
+  color: #475569;
+}
+
+.filters-row select {
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #1e293b;
+}

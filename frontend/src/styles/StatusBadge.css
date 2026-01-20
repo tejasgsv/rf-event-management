@@ -1,0 +1,67 @@
+/* StatusBadge.css */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+.status-badge .badge-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Available Status */
+.status-badge.available {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  animation: pulse-available 2s infinite;
+}
+
+@keyframes pulse-available {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.5);
+  }
+}
+
+/* Registered Status */
+.status-badge.registered {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+}
+
+/* Waitlisted Status */
+.status-badge.waitlisted {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+}
+
+/* Full/No Seats Status */
+.status-badge.full {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+/* Closed Registration */
+.status-badge.closed {
+  background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+  color: white;
+  animation: none;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .status-badge {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+}
