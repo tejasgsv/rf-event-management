@@ -1,6 +1,13 @@
 const db = require("../config/database");
 const Masterclass = require("../models/Masterclass");
 
+const toMysqlDateTime = (value) => {
+  if (!value) return value;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return date.toISOString().slice(0, 19).replace("T", " ");
+};
+
 /* =====================================================
    CREATE MASTERCLASS / SESSION (ADMIN)
 ===================================================== */
@@ -46,7 +53,18 @@ exports.createMasterclass = async (req, res) => {
     const [result] = await db.query(
       `INSERT INTO masterclasses (eventId, title, description, startTime, endTime, location, capacity, bookedCount, registrationCloseTime, waitlistCloseTime, status)
        VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?)`,
-      [eventId, title, description || null, startTime, endTime, location || null, capacity, calcRegClose, calcWaitlistClose, safeStatus]
+      [
+        eventId,
+        title,
+        description || null,
+        toMysqlDateTime(startTime),
+        toMysqlDateTime(endTime),
+        location || null,
+        capacity,
+        toMysqlDateTime(calcRegClose),
+        toMysqlDateTime(calcWaitlistClose),
+        safeStatus
+      ]
     );
 
     const [rows] = await db.query("SELECT * FROM masterclasses WHERE id = ?", [result.insertId]);
@@ -158,13 +176,13 @@ exports.updateMasterclass = async (req, res) => {
 
     if (title !== undefined) { updates.push("title = ?"); values.push(title); }
     if (description !== undefined) { updates.push("description = ?"); values.push(description); }
-    if (startTime !== undefined) { updates.push("startTime = ?"); values.push(startTime); }
-    if (endTime !== undefined) { updates.push("endTime = ?"); values.push(endTime); }
+    if (startTime !== undefined) { updates.push("startTime = ?"); values.push(toMysqlDateTime(startTime)); }
+    if (endTime !== undefined) { updates.push("endTime = ?"); values.push(toMysqlDateTime(endTime)); }
     if (location !== undefined) { updates.push("location = ?"); values.push(location); }
     if (capacity !== undefined) { updates.push("capacity = ?"); values.push(capacity); }
     if (status !== undefined) { updates.push("status = ?"); values.push(status); }
-    if (registrationCloseTime !== undefined) { updates.push("registrationCloseTime = ?"); values.push(registrationCloseTime); }
-    if (waitlistCloseTime !== undefined) { updates.push("waitlistCloseTime = ?"); values.push(waitlistCloseTime); }
+    if (registrationCloseTime !== undefined) { updates.push("registrationCloseTime = ?"); values.push(toMysqlDateTime(registrationCloseTime)); }
+    if (waitlistCloseTime !== undefined) { updates.push("waitlistCloseTime = ?"); values.push(toMysqlDateTime(waitlistCloseTime)); }
 
     if (updates.length === 0) {
       return res.status(400).json({ success: false, message: "No fields to update" });
