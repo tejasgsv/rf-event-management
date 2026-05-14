@@ -1,0 +1,8 @@
+mysql:
+  image: mysql:8
+  restart: always
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: rf_event
+  ports:
+    - "3307:3306"
