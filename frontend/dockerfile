@@ -1,0 +1,8 @@
+FROM node AS build
+WORKDIR /app        
+COPY package.json ./
+RUN npm install
+COPY . ./
+ARG VITE_API_URL=http://backend:5000/api
+ENV VITE_API_URL=$VITE_API_URL
+CMD ["nginx", "-g", "daemon off;"]  

@@ -1,3 +1,5 @@
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 const db = require('./config/database');
 
 async function createTables() {
@@ -83,6 +85,45 @@ async function createTables() {
     }
 
     console.log('🔧 Masterclasses table patched (status, speakerId)');
+
+    // Create speakers table
+    await db.query(`
+      CREATE TABLE IF NOT EXISTS speakers (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        title VARCHAR(255),
+        designation VARCHAR(255),
+        organization VARCHAR(255),
+        bio TEXT,
+        photo VARCHAR(500),
+        email VARCHAR(255),
+        linkedin VARCHAR(500),
+        twitter VARCHAR(500),
+        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        INDEX idx_name (name),
+        INDEX idx_email (email)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    `);
+    console.log('✅ Speakers table created');
+
+    // Create masterclass_speakers pivot table
+    await db.query(`
+      CREATE TABLE IF NOT EXISTS masterclass_speakers (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        masterclassId INT NOT NULL,
+        speakerId INT NOT NULL,
+        orderIndex INT DEFAULT 0,
+        role VARCHAR(100) DEFAULT 'SPEAKER',
+        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (masterclassId) REFERENCES masterclasses(id) ON DELETE CASCADE,
+        FOREIGN KEY (speakerId) REFERENCES speakers(id) ON DELETE CASCADE,
+        UNIQUE KEY unique_mc_speaker (masterclassId, speakerId),
+        INDEX idx_speakerId (speakerId),
+        INDEX idx_masterclassId_order (masterclassId, orderIndex)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    `);
+    console.log('✅ Masterclass_Speakers pivot table created');
 
     // Create registrations table
     await db.query(`

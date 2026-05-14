@@ -6,7 +6,7 @@ const pool = mysql.createPool({
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'rf_event_management',
-  port: process.env.DB_PORT || 3307, // ✅ FIX: correct default port
+  port: process.env.DB_PORT || 3306, // ✅ FIX: correct default port
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
@@ -14,16 +14,24 @@ const pool = mysql.createPool({
   timezone: '+05:30'
 });
 
-// Test connection
-async function testConnection() {
-  try {
-    const connection = await pool.getConnection();
-    console.log('✅ Database connection successful');
-    connection.release();
-    return true;
-  } catch (error) {
-    console.error('❌ Database connection failed:', error.message);
-    throw error;
+// Test connection with retry logic
+async function testConnection(maxRetries = 5, delayMs = 2000) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      const connection = await pool.getConnection();
+      console.log('✅ Database connection successful');
+      connection.release();
+      return true;
+    } catch (error) {
+      console.error(`❌ Database connection attempt ${attempt}/${maxRetries} failed:`, error.message);
+      
+      if (attempt === maxRetries) {
+        throw new Error(`Failed to connect to database after ${maxRetries} attempts: ${error.message}`);
+      }
+      
+      console.log(`⏳ Retrying in ${delayMs}ms...`);
+      await new Promise(resolve => setTimeout(resolve, delayMs));
+    }
   }
 }
 

@@ -1,15 +1,18 @@
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 const db = require('./config/database');
-const bcryptjs = require('bcryptjs');
+const crypto = require('crypto');
 
 async function createAdmin() {
   try {
     console.log('Creating admin user...');
     console.log(`🔌 Connecting to DB at ${process.env.DB_HOST}:${process.env.DB_PORT}...`);
 
-    // Hash password
-    const hashedPassword = await bcryptjs.hash('admin123', 12);
+    // Hash password using SHA256 (matching adminController.js)
+    const hashedPassword = crypto
+      .createHash('sha256')
+      .update('admin123')
+      .digest('hex');
 
     // Insert or update admin
     const result = await db.query(

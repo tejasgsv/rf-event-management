@@ -1,3 +1,5 @@
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 const db = require('./config/database');
 const bcryptjs = require('bcryptjs');
 
@@ -111,10 +113,10 @@ async function seedMySQL() {
     const crypto = require('crypto');
     const hashedPassword = crypto.createHash('sha256').update('admin123').digest('hex');
     await db.query(`
-      INSERT INTO admins (email, password, role)
-      VALUES (?, ?, ?)
+      INSERT INTO admins (email, password)
+      VALUES (?, ?)
       ON DUPLICATE KEY UPDATE email=email
-    `, ['admin@rf-events.com', hashedPassword, 'superadmin']);
+    `, ['admin@rf-events.com', hashedPassword]);
     console.log('✅ Sample admin user created');
 
     // Create some sample registrations for the full masterclass (for testing waitlist)
